@@ -17,13 +17,13 @@ FayasNoushad = Client(
 )
 
 START_TEXT = """
-Hello {}, I' am small media or file to telegra.ph link uploader bot.
+<b>Hello {}, /nIam A Telegraph Uploader Bot.</b>
 
-- Just give me a media under 5MB
-- Then I will download it
-- I will then upload it to the telegra.ph link
+<b>Follow This For Help.<b>
 
-Made by @FayasNoushad
+⭕ `Forward Me A Media File.`
+⭕ `Then I will Download It And Upload It To Telegraph.`
+⭕ `And Send You The Generated Link.`
 """
 
 # start command
@@ -34,17 +34,17 @@ async def start(bot, update):
         text=START_TEXT.format(update.from_user.mention),
         parse_mode="html",
         disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('⚙ Channel ⚙', url='https://telegram.me/FayasNoushad'), InlineKeyboardButton('⚙ Group ⚙', url='https://telegram.me/FayasChat')]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Join Channel', url='https://telegram.me/David_Botz')]]),
         reply_to_message_id=update.message_id
     )
 
 # Main function
 @FayasNoushad.on_message(filters.media & filters.private)
 async def getmedia(bot, update):
-    medianame = "./DOWNLOADS/" + "FayasNoushad/FnTelegraphBot"
+    medianame = "./DOWNLOADS/"
     text = await bot.send_message(
         chat_id=update.chat.id,
-        text="<code>Downloading to My Server ...</code>",
+        text="<code><b>Downloading ⬇️</b></code>",
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -54,7 +54,7 @@ async def getmedia(bot, update):
         file_name=medianame
     )
     await text.edit_text(
-        text="<code>Downloading Completed. Now I'am Uploading to telegra.ph Link ...</code>"
+        text="<code><b>Uploading ⬆️</b></code>"
     )
     try:
         response = upload_file(medianame)
@@ -66,10 +66,10 @@ async def getmedia(bot, update):
         )
         return
     await text.edit_text(
-        text=f"<b>Link :-</b> <code>https://telegra.ph{response[0]}</code>\n\n<b>Join :-</b> @FayasNoushad",
+        text=f"<b>Link :-</b> <code>https://telegra.ph{response[0]}</code>\n\n<b>Join :-</b> @David_Botz",
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Open Link", url=f"https://telegra.ph{response[0]}"), InlineKeyboardButton(text="Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),],
-                                           [InlineKeyboardButton(text="⚙ Join Updates Channel ⚙", url="https://telegram.me/FayasNoushad")]])
+                                           [InlineKeyboardButton(text="Join Channel", url="https://telegram.me/David_Botz")]])
     )
     try:
         os.remove(medianame)
