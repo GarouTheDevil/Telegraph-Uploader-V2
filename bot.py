@@ -21,9 +21,9 @@ START_TEXT = """
 
 <b>Follow This For Help.<b>
 
-⭕ `Forward Me A Media File.`
-⭕ `Then I will Download It And Upload It To Telegraph.`
-⭕ `And Send You The Generated Link.`
+⭕ <code>Forward Me A Media File.</code>
+⭕ <code>Then I will Download It And Upload It To Telegraph.</code>
+⭕ <code>And Send You The Generated Link.</code>
 """
 
 # start command
@@ -41,10 +41,10 @@ async def start(bot, update):
 # Main function
 @FayasNoushad.on_message(filters.media & filters.private)
 async def getmedia(bot, update):
-    medianame = "./DOWNLOADS/"
+    medianame = "./DOWNLOADS/"  + "FayasNoushad/FnTelegraphBot"
     text = await bot.send_message(
         chat_id=update.chat.id,
-        text="<code><b>Downloading ⬇️</b></code>",
+        text="<b>Downloading ⬇️</b>",
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id
@@ -54,7 +54,7 @@ async def getmedia(bot, update):
         file_name=medianame
     )
     await text.edit_text(
-        text="<code><b>Uploading ⬆️</b></code>"
+        text="<b>Uploading ⬆️</b>"
     )
     try:
         response = upload_file(medianame)
