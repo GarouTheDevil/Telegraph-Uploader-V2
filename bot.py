@@ -17,7 +17,7 @@ FayasNoushad = Client(
 )
 
 START_TEXT = """
-<b>Hello {}, /nIam A Telegraph Uploader Bot.</b>
+<b>Hello {}, \nIam A Telegraph Uploader Bot.</b>
 
 <b>Follow This For Help.<b>
 
