@@ -17,13 +17,13 @@ FayasNoushad = Client(
 )
 
 START_TEXT = """
-<b>Hello {}, \nIam A Telegraph Uploader Bot.</b>
+<b>Hello {}, \nIam A Telegraph Uploader Bot</b>
+"""
 
-<b>Follow This For Help.<b>
-
-⭕ <code>Forward Me A Media File.</code>
-⭕ <code>Then I will Download It And Upload It To Telegraph.</code>
-⭕ <code>And Send You The Generated Link.</code>
+HELP_TEXT = """
+<b>• Forward Me A Media File</b>
+<b>• I will Download It And Upload It To Telegraph</b>
+<b>• And Send You The Generated Link</b>
 """
 
 # start command
@@ -34,7 +34,18 @@ async def start(bot, update):
         text=START_TEXT.format(update.from_user.mention),
         parse_mode="html",
         disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Join Channel', url='https://telegram.me/David_Botz')]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Join Channel', url='https://telegram.me/DevilBotz')]]),
+        reply_to_message_id=update.message_id
+    )
+
+@FayasNoushad.on_message(filters.command(["help"]))
+async def start(bot, update):
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text=HELP_TEXT,
+        parse_mode="html",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Join Channel', url='https://telegram.me/DevilBotz')]]),
         reply_to_message_id=update.message_id
     )
 
@@ -66,10 +77,10 @@ async def getmedia(bot, update):
         )
         return
     await text.edit_text(
-        text=f"<b>Link :-</b> <code>https://telegra.ph{response[0]}</code>\n\n<b>Join :-</b> @David_Botz",
+        text=f"<b>Link :-</b> <code>https://telegra.ph{response[0]}</code>,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Open Link", url=f"https://telegra.ph{response[0]}"), InlineKeyboardButton(text="Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),],
-                                           [InlineKeyboardButton(text="Join Channel", url="https://telegram.me/David_Botz")]])
+                                           [InlineKeyboardButton(text="Join Channel", url="https://telegram.me/DevilBotz")]])
     )
     try:
         os.remove(medianame)
