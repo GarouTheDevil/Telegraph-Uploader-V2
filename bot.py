@@ -39,7 +39,7 @@ async def start(bot, update):
     )
 
 @FayasNoushad.on_message(filters.command(["help"]))
-async def start(bot, update):
+async def help(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text=HELP_TEXT,
