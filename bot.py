@@ -141,7 +141,7 @@ async def button(bot, update):
       elif "start" in cb_data:
         await update.message.delete()
         await start(bot, update.message)
-      elif "closeme" in cb_data:
+      if "closeme" in cb_data:
       await update.message.delete()
 
 FayasNoushad.run()
