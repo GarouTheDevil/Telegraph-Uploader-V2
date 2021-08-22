@@ -123,7 +123,9 @@ async def getmedia(bot, update):
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Open Link", url=f"https://telegra.ph{response[0]}"), InlineKeyboardButton(text="Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),],
                                            [InlineKeyboardButton(text="Join Channel", url="https://telegram.me/DevilBotz")]])
     )
-    try:
+
+    )
+    finally:
         os.remove(medianame)
 
 
