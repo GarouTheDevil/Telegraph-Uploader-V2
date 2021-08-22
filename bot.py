@@ -124,7 +124,7 @@ async def getmedia(bot, update):
                                         InlineKeyboardButton(
                                             "Open Link", url=f"https://telegra.ph{response[0]}"),
                                         InlineKeyboardButton(
-                                            "Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),],
+                                            "Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),]
                                     ],[
                                       InlineKeyboardButton(
                                             "Join Channel", url="https://telegram.me/DevilBotz")
