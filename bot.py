@@ -120,14 +120,14 @@ async def getmedia(bot, update):
     await text.edit_text(
         text=f"<b>Link :-</b> <code>https://telegra.ph{response[0]}</code>",
         reply_markup=InlineKeyboardMarkup(
-                                [[
+                                    [[
                                         InlineKeyboardButton(
                                             "Open Link", url=f"https://telegra.ph{response[0]}"),
                                         InlineKeyboardButton(
                                             "Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),],
                                     ],[
                                       InlineKeyboardButton(
-                                            "Join Channel", url="https://telegram.me/DevilBotz")])
+                                            "Join Channel", url="https://telegram.me/DevilBotz"))
                                     ]]
                             ),        
             disable_web_page_preview=True,        
