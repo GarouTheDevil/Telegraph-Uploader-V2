@@ -16,14 +16,18 @@ FayasNoushad = Client(
     api_hash = os.environ["API_HASH"],
 )
 
-START_TEXT = """
+START = """
 <b>Hello {}, \nIam A Telegraph Uploader Bot</b>
 """
 
-HELP_TEXT = """
+HELP = """
 <b>• Forward Me A Media File</b>
 <b>• I will Download It And Upload It To Telegraph</b>
 <b>• And Send You The Generated Link</b>
+"""
+
+ABOUT = """
+<b>A Modified Telegraph Uploader Bot </b>
 """
 
 # start command
@@ -31,23 +35,59 @@ HELP_TEXT = """
 async def start(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
-        text=START_TEXT.format(update.from_user.mention),
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Join Channel', url='https://telegram.me/DevilBotz')]]),
-        reply_to_message_id=update.message_id
-    )
+        text=START.format(update.from_user.mention),
+        reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "HELP", callback_data="help"),
+                                        InlineKeyboardButton(
+                                            "ABOUT", callback_data="about"),
+                                    ],[
+                                      InlineKeyboardButton(
+                                            "CLOSE", callback_data="closeme")
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html")
 
 @FayasNoushad.on_message(filters.command(["help"]))
 async def help(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
-        text=HELP_TEXT,
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton('Join Channel', url='https://telegram.me/DevilBotz')]]),
-        reply_to_message_id=update.message_id
-    )
+        text=HELP,
+        reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "ABOUT", callback_data="about"),
+                                        InlineKeyboardButton(
+                                            "START", callback_data="start"),
+                                    ],[
+                                      InlineKeyboardButton(
+                                            "CLOSE", callback_data="closeme")
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html")
+
+@FayasNoushad.on_message(filters.command(["about"]))
+async def help(bot, update):
+    await bot.send_message(
+        chat_id=update.chat.id,
+        text=ABOUT,
+        reply_markup=InlineKeyboardMarkup(
+                                [[
+                                        InlineKeyboardButton(
+                                            "HELP", callback_data="help"),
+                                        InlineKeyboardButton(
+                                            "START", callback_data="start"),
+                                    ],[
+                                      InlineKeyboardButton(
+                                            "CLOSE", callback_data="closeme")
+                                    ]]
+                            ),        
+            disable_web_page_preview=True,        
+            parse_mode="html")
+
 
 # Main function
 @FayasNoushad.on_message(filters.media & filters.private)
@@ -86,5 +126,21 @@ async def getmedia(bot, update):
         os.remove(medianame)
     except:
         pass
+
+
+@cilent.on_callback_query()
+async def button(bot, update):
+      cb_data = update.data
+      if "help" in cb_data:
+        await update.message.delete()
+        await help(bot, update.message)
+      elif "about" in cb_data:
+        await update.message.delete()
+        await about(bot, update.message)
+      elif "start" in cb_data:
+        await update.message.delete()
+        await start(bot, update.message)
+      elif "closeme" in cb_data:
+      await update.message.delete()
 
 FayasNoushad.run()
