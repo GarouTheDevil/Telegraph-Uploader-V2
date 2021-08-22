@@ -127,7 +127,7 @@ async def getmedia(bot, update):
                                             "Share Link", url=f"https://telegram.me/share/url?url=https://telegra.ph{response[0]}"),],
                                     ],[
                                       InlineKeyboardButton(
-                                            "Join Channel", url="https://telegram.me/DevilBotz")]])
+                                            "Join Channel", url="https://telegram.me/DevilBotz")])
                                     ]]
                             ),        
             disable_web_page_preview=True,        
