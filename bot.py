@@ -5,6 +5,7 @@
 # License -> https://github.com/FayasNoushad/Telegraph-Uploader-Bot/blob/main/LICENSE
 
 import os
+import pyrogram
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from telegraph import upload_file
@@ -128,7 +129,7 @@ async def getmedia(bot, update):
         pass
 
 
-@cilent.on_callback_query()
+@pyrogram.Client.on_callback_query()
 async def button(bot, update):
       cb_data = update.data
       if "help" in cb_data:
