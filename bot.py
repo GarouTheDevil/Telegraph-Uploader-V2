@@ -128,7 +128,7 @@ async def getmedia(bot, update):
                                     ],[
                                       InlineKeyboardButton(
                                             "Join Channel", url="https://telegram.me/DevilBotz")
-                                    ]])
+                                     ]
                             ),        
             disable_web_page_preview=True,        
             parse_mode="html")
