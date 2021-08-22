@@ -126,7 +126,7 @@ async def getmedia(bot, update):
     try:
         os.remove(medianame)
 
-@@FayasNoushad.on_callback_query()
+@FayasNoushad.on_callback_query()
 async def button(bot, update):
       cb_data = update.data
       if "help" in cb_data:
