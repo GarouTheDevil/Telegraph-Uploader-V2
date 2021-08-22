@@ -132,6 +132,7 @@ async def getmedia(bot, update):
                             ),        
             disable_web_page_preview=True,        
             parse_mode="html")
+         )
        finally:
                os.remove(medianame)
 
