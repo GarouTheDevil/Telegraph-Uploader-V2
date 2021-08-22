@@ -125,10 +125,6 @@ async def getmedia(bot, update):
     )
     try:
         os.remove(medianame)
-    except:
-        pass
-        )
-        return
 
 @pyrogram.Client.on_callback_query()
 async def button(bot, update):
